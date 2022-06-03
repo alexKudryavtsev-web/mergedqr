@@ -1,0 +1,35 @@
+{
+  "name": "mergedqr",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "mergedqr - combined several QR codes into one",
+  "main": "app.js",
+  "scripts": {
+    "dev": "concurrently \"nodemon app.js\" \"npm run start --prefix client\""
+  },
+  "keywords": [
+    "react",
+    "node",
+    "express",
+    "mongodb",
+    "MERN"
+  ],
+  "author": "alexKudryavtsev-web (qwertyshurazh@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.7",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.5",
+    "morgan": "^1.10.0",
+    "qrcode": "^1.5.0",
+    "socketio": "^1.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "nodemon": "^2.0.16"
+  }
+}
