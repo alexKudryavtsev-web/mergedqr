@@ -6,6 +6,6 @@ const router = new Router();
 router
   .post("/", SessionController.create)
   .delete("/", SessionController.delete)
-  .put("/", SessionController.refresh);
+  .put("/", SessionController.update);
 
 export default router;

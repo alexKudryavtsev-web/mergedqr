@@ -16,6 +16,11 @@ class UserController {
 
   async read(req, res, next) {
     try {
+      const { userId } = req.user;
+
+      const userData = await UserService.read(userId);
+
+      return res.json(userData);
     } catch (error) {
       next(error);
     }
@@ -23,6 +28,12 @@ class UserController {
 
   async update(req, res, next) {
     try {
+      const { userId } = req.user;
+      const { name = "", description = "" } = req.body;
+
+      const userData = await UserService.update(userId, name, description);
+
+      return res.json(userData);
     } catch (error) {
       next(error);
     }

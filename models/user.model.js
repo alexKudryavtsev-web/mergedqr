@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+import ApiError from "../error/api.error.js";
+
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema(
@@ -40,4 +42,13 @@ const userSchema = new Schema(
   }
 );
 
+userSchema.statics.findUserByEmail = async function (email) {
+  const user = this.findOne({ email });
+
+  if (!user) {
+    throw ApiError.BadRequest("User not found");
+  }
+
+  return user;
+};
 export default model("User", userSchema);

@@ -44,6 +44,30 @@ class UserService {
     };
   }
 
+  async read(userId) {
+    const user = await User.findById(userId);
+
+    const userDto = new UserDto(user);
+
+    return {
+      user: userDto,
+    };
+  }
+
+  async update(userId, name, description) {
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { name, description },
+      { new: true }
+    );
+
+    const userDto = new UserDto(user);
+
+    return {
+      user: userDto,
+    };
+  }
+
   async resetActivationMail(email) {
     const user = await User.findOne({ email });
 
