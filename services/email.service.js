@@ -1,7 +1,10 @@
 import config from "config";
 import nodemailer from "nodemailer";
 import { exit } from "process";
-import { createActivationUserMail } from "../utils/mail.js";
+import {
+  createActivationUserMail,
+  createResetPasswordMail,
+} from "../utils/mail.js";
 
 class EmailService {
   transporter;
@@ -24,11 +27,19 @@ class EmailService {
     });
   }
 
-  sendActivationUserMail(userMail, appeal, link) {
+  sendActivationUserMail(userMail, link) {
     this.transporter.sendMail({
       to: userMail,
       subject: "Account activation",
-      html: createActivationUserMail(appeal, link),
+      html: createActivationUserMail(link),
+    });
+  }
+
+  sendResetPasswordMail(userMail, link) {
+    this.transporter.sendMail({
+      to: userMail,
+      subject: "Reset password",
+      html: createResetPasswordMail(link),
     });
   }
 }

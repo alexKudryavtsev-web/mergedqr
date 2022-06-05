@@ -14,6 +14,7 @@ import sessionRouter from "./router/session.routes.js";
 import redirectRouter from "./router/redirect.routes.js";
 import analyticRouter from "./router/analytic.routes.js";
 import errorMiddleware from "./middleware/error.middleware.js";
+import mongoose from "mongoose";
 
 const CORS_OPTIONS = {
   origin: config.get("CLIENT_URL"),
@@ -40,6 +41,7 @@ app.use(errorMiddleware);
 
 async function start() {
   try {
+    await mongoose.connect(config.get("DB_URI"));
     const PORT = config.get("PORT");
     server.listen(PORT);
 
